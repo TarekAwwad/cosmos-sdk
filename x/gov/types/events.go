@@ -12,6 +12,7 @@ const (
 	AttributeKeyProposalResult              = "proposal_result"
 	AttributeKeyVoter                       = "voter"
 	AttributeKeyOption                      = "option"
+	AttributeKeyCypherID                    = "cypher_id"
 	AttributeKeyProposalID                  = "proposal_id"
 	AttributeKeyDepositor                   = "depositor"
 	AttributeKeyProposalMessages            = "proposal_messages" // Msg type_urls in the proposal

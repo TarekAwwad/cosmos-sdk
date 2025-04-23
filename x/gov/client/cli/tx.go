@@ -70,6 +70,7 @@ func NewTxCmd(legacyPropCmds []*cobra.Command) *cobra.Command {
 	govTxCmd.AddCommand(
 		NewCmdDeposit(),
 		NewCmdVote(),
+		NewCmdSecretVote(),
 		NewCmdWeightedVote(),
 		NewCmdSubmitProposal(),
 		NewCmdDraftProposal(),
@@ -360,12 +361,14 @@ func NewCmdSecretVote() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "secret-vote [proposal-id] [option]",
 		Args:  cobra.ExactArgs(2),
-		Short: "Vote for an active proposal, options: yes/no/no_with_veto/abstain",
+		Short: "Cast a secret vote on an active proposal",
 		Long: strings.TrimSpace(
-			fmt.Sprintf(`Submit a vote for an active proposal. You can
+			fmt.Sprintf(
+				`Submit secret vote for an active proposal. You can
 find the proposal-id by running "%s query gov proposals".
+
 Example:
-$ %s tx gov secret-vote 1 CypherID --from mykey
+$ %s tx gov vote 1 cypherID --from mykey
 `,
 				version.AppName, version.AppName,
 			),

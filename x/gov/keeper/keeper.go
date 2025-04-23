@@ -52,6 +52,7 @@ type Keeper struct {
 	Params                 collections.Item[v1.Params]
 	Deposits               collections.Map[collections.Pair[uint64, sdk.AccAddress], v1.Deposit]
 	Votes                  collections.Map[collections.Pair[uint64, sdk.AccAddress], v1.Vote]
+	SecretVotes            collections.Map[collections.Pair[uint64, sdk.AccAddress], v1.SecretVote]
 	ProposalID             collections.Sequence
 	Proposals              collections.Map[uint64, v1.Proposal]
 	ActiveProposalsQueue   collections.Map[collections.Pair[time.Time, uint64], uint64] // TODO(tip): this should be simplified and go into an index.
