@@ -179,7 +179,6 @@ message SecretVote {
   string metadata = 4;
 }
 
-
 // DepositParams defines the params for deposits on governance proposals.
 message DepositParams {
   option deprecated = true;
