@@ -51,6 +51,22 @@ func NewQueryProposalVotesParams(proposalID uint64, page, limit int) QueryPropos
 	}
 }
 
+// QuerySecretVotesParams params for query 'custom/gov/secretvotes'
+type QuerySecretVotesParams struct {
+	ProposalID uint64
+	Page       int
+	Limit      int
+}
+
+// NewQuerySecretVotesParams creates a new instance of QuerySecretVotesParams
+func NewQuerySecretVotesParams(proposalID uint64, voter sdk.AccAddress) QuerySecretVotesParams {
+	return QuerySecretVotesParams{
+		ProposalID: proposalID,
+		Page:       1,
+		Limit:      100,
+	}
+}
+
 // QueryDepositParams params for query 'custom/gov/deposit'
 type QueryDepositParams struct {
 	ProposalID uint64

@@ -60,6 +60,16 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					},
 				},
 				{
+					RpcMethod: "SecretVote",
+					Use:       "secret-vote [proposal-id] [voter-addr]",
+					Short:     "Query details of a single secret vote",
+					Example:   fmt.Sprintf("%s query gov secret-vote 1 cosmos1...", version.AppName),
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "proposal_id"},
+						{ProtoField: "voter"},
+					},
+				},
+				{
 					RpcMethod: "Deposit",
 					Use:       "deposit [proposal-id] [depositer-addr]",
 					Short:     "Query details of a deposit",

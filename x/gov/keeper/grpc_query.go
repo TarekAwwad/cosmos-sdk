@@ -154,6 +154,57 @@ func (q queryServer) Votes(ctx context.Context, req *v1.QueryVotesRequest) (*v1.
 	return &v1.QueryVotesResponse{Votes: votes, Pagination: pageRes}, nil
 }
 
+// SecretVote returns SecretVote information based on proposalID, voterAddr
+func (q queryServer) SecretVote(ctx context.Context, req *v1.QuerySecretVoteRequest) (*v1.QuerySecretVoteResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	if req.ProposalId == 0 {
+		return nil, status.Error(codes.InvalidArgument, "proposal id can not be 0")
+	}
+
+	if req.Voter == "" {
+		return nil, status.Error(codes.InvalidArgument, "empty voter address")
+	}
+
+	voter, err := q.k.authKeeper.AddressCodec().StringToBytes(req.Voter)
+	if err != nil {
+		return nil, err
+	}
+
+	secretVote, err := q.k.SecretVotes.Get(ctx, collections.Join(req.ProposalId, sdk.AccAddress(voter)))
+	if err != nil {
+		if errors.IsOf(err, collections.ErrNotFound) {
+			return nil, status.Errorf(codes.InvalidArgument,
+				"voter: %v not found for proposal: %v", req.Voter, req.ProposalId)
+		}
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+
+	return &v1.QuerySecretVoteResponse{SecretVote: &secretVote}, nil
+}
+
+// SecretVotes returns single proposal's secret votes
+func (q queryServer) SecretVotes(ctx context.Context, req *v1.QuerySecretVotesRequest) (*v1.QuerySecretVotesResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	if req.ProposalId == 0 {
+		return nil, status.Error(codes.InvalidArgument, "proposal id can not be 0")
+	}
+
+	secretVotes, pageRes, err := query.CollectionPaginate(ctx, q.k.SecretVotes, req.Pagination, func(_ collections.Pair[uint64, sdk.AccAddress], value v1.SecretVote) (vote *v1.SecretVote, err error) {
+		return &value, nil
+	}, query.WithCollectionPaginationPairPrefix[uint64, sdk.AccAddress](req.ProposalId))
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+
+	return &v1.QuerySecretVotesResponse{SecretVotes: secretVotes, Pagination: pageRes}, nil
+}
+
 // Params queries all params
 func (q queryServer) Params(ctx context.Context, req *v1.QueryParamsRequest) (*v1.QueryParamsResponse, error) {
 	if req == nil {
