@@ -123,6 +123,24 @@ message MsgVote {
   string metadata = 4;
 }
 
+// MsgSecretVote defines a message to cast a vote with secret ballot.
+message MsgSecretVote {
+  option (cosmos.msg.v1.signer) = "voter";
+  option (amino.name)           = "cosmos-sdk/v1/MsgSecretVote";
+
+  // proposal_id defines the unique id of the proposal.
+  uint64 proposal_id = 1 [(gogoproto.jsontag) = "proposal_id", (amino.dont_omitempty) = true];
+
+  // voter is the voter address for the proposal.
+  string voter = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // option defines the vote option.
+  string CypherID = 3 [(gogoproto.jsontag) = "cypher_id"];
+
+  // metadata is any arbitrary metadata attached to the Vote.
+  string metadata = 4;
+}
+
 // MsgVoteResponse defines the Msg/Vote response type.
 message MsgVoteResponse {}
 

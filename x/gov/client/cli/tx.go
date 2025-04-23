@@ -355,6 +355,54 @@ $ %s tx gov vote 1 yes --from mykey
 	return cmd
 }
 
+// NewCmdSecretVote implements creating a new secret vote command.
+func NewCmdSecretVote() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "secret-vote [proposal-id] [option]",
+		Args:  cobra.ExactArgs(2),
+		Short: "Vote for an active proposal, options: yes/no/no_with_veto/abstain",
+		Long: strings.TrimSpace(
+			fmt.Sprintf(`Submit a vote for an active proposal. You can
+find the proposal-id by running "%s query gov proposals".
+Example:
+$ %s tx gov secret-vote 1 CypherID --from mykey
+`,
+				version.AppName, version.AppName,
+			),
+		),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+			// Get voting address
+			from := clientCtx.GetFromAddress()
+
+			// validate that the proposal id is a uint
+			proposalID, err := strconv.ParseUint(args[0], 10, 64)
+			if err != nil {
+				return fmt.Errorf("proposal-id %s not a valid int, please input a valid proposal-id", args[0])
+			}
+
+			// Fetch the cypherID from the args
+			cypherID := args[1]
+
+			metadata, err := cmd.Flags().GetString(FlagMetadata)
+			if err != nil {
+				return err
+			}
+
+			// Build vote message and run basic validation
+			msg := v1.NewMsgSecretVote(from, proposalID, cypherID, metadata)
+
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
+		},
+	}
+	cmd.Flags().String(FlagMetadata, "", "Specify metadata of the vote")
+	flags.AddTxFlagsToCmd(cmd)
+	return cmd
+}
+
 // NewCmdWeightedVote implements creating a new weighted vote command.
 func NewCmdWeightedVote() *cobra.Command {
 	cmd := &cobra.Command{

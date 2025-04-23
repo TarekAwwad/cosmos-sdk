@@ -70,6 +70,11 @@ func NewMsgVote(voter sdk.AccAddress, proposalID uint64, option VoteOption, meta
 	return &MsgVote{proposalID, voter.String(), option, metadata}
 }
 
+// NewMsgSecretVote creates a message to cast a secret vote on an active proposal
+func NewMsgSecretVote(voter sdk.AccAddress, proposalID uint64, cypherID string, metadata string) *MsgSecretVote {
+	return &MsgSecretVote{proposalID, voter.String(), cypherID, metadata}
+}
+
 // NewMsgVoteWeighted creates a message to cast a vote on an active proposal
 func NewMsgVoteWeighted(voter sdk.AccAddress, proposalID uint64, options WeightedVoteOptions, metadata string) *MsgVoteWeighted {
 	return &MsgVoteWeighted{proposalID, voter.String(), options, metadata}
