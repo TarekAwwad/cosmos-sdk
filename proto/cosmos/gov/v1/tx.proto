@@ -27,6 +27,9 @@ service Msg {
   // Vote defines a method to add a vote on a specific proposal.
   rpc Vote(MsgVote) returns (MsgVoteResponse);
 
+  // SecretVote defines a method to add a secret vote on a specific proposal.
+  rpc SecretVote(MsgSecretVote) returns (MsgVoteResponse);
+
   // VoteWeighted defines a method to add a weighted vote on a specific proposal.
   rpc VoteWeighted(MsgVoteWeighted) returns (MsgVoteWeightedResponse);
 
@@ -135,7 +138,7 @@ message MsgSecretVote {
   string voter = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
 
   // option defines the vote option.
-  string CypherID = 3 [(gogoproto.jsontag) = "cypher_id"];
+  string Cypher_id = 3 [(gogoproto.jsontag) = "cypher_id"];
 
   // metadata is any arbitrary metadata attached to the Vote.
   string metadata = 4;

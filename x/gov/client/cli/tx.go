@@ -359,7 +359,7 @@ $ %s tx gov vote 1 yes --from mykey
 // NewCmdSecretVote implements creating a new secret vote command.
 func NewCmdSecretVote() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "secret-vote [proposal-id] [option]",
+		Use:   "secret-vote [proposal-id] [cypherID]",
 		Args:  cobra.ExactArgs(2),
 		Short: "Cast a secret vote on an active proposal",
 		Long: strings.TrimSpace(
