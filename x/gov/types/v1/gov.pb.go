@@ -576,13 +576,13 @@ func (m *Vote) GetMetadata() string {
 }
 
 // SecretVote defines a vote on a governance proposal with a secret option.
-// A SecretVote consists of a proposal ID, the voter, and the vote cypherID.
+// A SecretVote consists of a proposal ID, the voter, and the vote cypher_id.
 type SecretVote struct {
 	// proposal_id defines the unique id of the proposal.
 	ProposalId uint64 `protobuf:"varint,1,opt,name=proposal_id,json=proposalId,proto3" json:"proposal_id,omitempty"`
 	// voter is the voter address of the proposal.
 	Voter string `protobuf:"bytes,2,opt,name=voter,proto3" json:"voter,omitempty"`
-	// cypherID is the ID of the encrypted vote option.
+	// cypher_id is the ID of the encrypted vote option.
 	CypherId string `protobuf:"bytes,3,opt,name=cypher_id,json=cypherId,proto3" json:"cypher_id,omitempty"`
 	// metadata is any arbitrary metadata attached to the vote.
 	// the recommended format of the metadata is to be found here: https://docs.cosmos.network/v0.47/modules/gov#vote-5

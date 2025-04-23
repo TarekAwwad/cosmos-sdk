@@ -138,7 +138,7 @@ message MsgSecretVote {
   string voter = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
 
   // option defines the vote option.
-  string Cypher_id = 3 [(gogoproto.jsontag) = "cypher_id"];
+  string cypher_id = 3 [(gogoproto.jsontag) = "cypher_id"];
 
   // metadata is any arbitrary metadata attached to the Vote.
   string metadata = 4;
