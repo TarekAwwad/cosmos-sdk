@@ -38,7 +38,7 @@ service Query {
 
   // SecretVote queries secret voted information based on proposalID, voterAddr.
   rpc SecretVote(QuerySecretVoteRequest) returns (QuerySecretVoteResponse) {
-    option (google.api.http).get = "/cosmos/gov/v1/proposals/{proposal_id}/secret_votes/{voter}/{cypher_id}";
+    option (google.api.http).get = "/cosmos/gov/v1/proposals/{proposal_id}/secret_votes/{voter}";
   }
 
   // SecretVotes queries secret votes of a given proposal.

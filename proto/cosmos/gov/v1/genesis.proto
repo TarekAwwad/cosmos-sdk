@@ -37,4 +37,6 @@ message GenesisState {
   //
   // Since: cosmos-sdk 0.50
   string constitution = 9;
+  // secret_votes defines all the secret votes present at genesis.
+  repeated SecretVote secret_votes = 10;
 }
