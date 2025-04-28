@@ -6,14 +6,16 @@ import (
 
 // query endpoints supported by the governance Querier
 const (
-	QueryParams    = "params"
-	QueryProposals = "proposals"
-	QueryProposal  = "proposal"
-	QueryDeposits  = "deposits"
-	QueryDeposit   = "deposit"
-	QueryVotes     = "votes"
-	QueryVote      = "vote"
-	QueryTally     = "tally"
+	QueryParams      = "params"
+	QueryProposals   = "proposals"
+	QueryProposal    = "proposal"
+	QueryDeposits    = "deposits"
+	QueryDeposit     = "deposit"
+	QueryVotes       = "votes"
+	QueryVote        = "vote"
+	QuerySecretVote  = "secretvote"
+	QuerySecretVotes = "secretvotes"
+	QueryTally       = "tally"
 
 	ParamDeposit  = "deposit"
 	ParamVoting   = "voting"
@@ -51,19 +53,19 @@ func NewQueryProposalVotesParams(proposalID uint64, page, limit int) QueryPropos
 	}
 }
 
-// QuerySecretVotesParams params for query 'custom/gov/secretvotes'
-type QuerySecretVotesParams struct {
+// QueryProposalSecretVotesParams used to query 'custom/gov/secretvotes'.
+type QueryProposalSecretVotesParams struct {
 	ProposalID uint64
 	Page       int
 	Limit      int
 }
 
-// NewQuerySecretVotesParams creates a new instance of QuerySecretVotesParams
-func NewQuerySecretVotesParams(proposalID uint64, voter sdk.AccAddress) QuerySecretVotesParams {
-	return QuerySecretVotesParams{
+// NewQueryProposalSecretVotesParams creates new instance of the QueryProposalSecretVotesParams.
+func NewQueryProposalSecretVotesParams(proposalID uint64, page, limit int) QueryProposalSecretVotesParams {
+	return QueryProposalSecretVotesParams{
 		ProposalID: proposalID,
-		Page:       1,
-		Limit:      100,
+		Page:       page,
+		Limit:      limit,
 	}
 }
 
@@ -90,6 +92,20 @@ type QueryVoteParams struct {
 // NewQueryVoteParams creates a new instance of QueryVoteParams
 func NewQueryVoteParams(proposalID uint64, voter sdk.AccAddress) QueryVoteParams {
 	return QueryVoteParams{
+		ProposalID: proposalID,
+		Voter:      voter,
+	}
+}
+
+// QuerySecretVoteParams Params for query 'custom/gov/secretvote'
+type QuerySecretVoteParams struct {
+	ProposalID uint64
+	Voter      sdk.AccAddress
+}
+
+// NewQuerySecretVoteParams creates a new instance of QuerySecretVoteParams
+func NewQuerySecretVoteParams(proposalID uint64, voter sdk.AccAddress) QuerySecretVoteParams {
+	return QuerySecretVoteParams{
 		ProposalID: proposalID,
 		Voter:      voter,
 	}

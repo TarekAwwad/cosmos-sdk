@@ -43,7 +43,7 @@ type MsgClient interface {
 	// Vote defines a method to add a vote on a specific proposal.
 	Vote(ctx context.Context, in *MsgVote, opts ...grpc.CallOption) (*MsgVoteResponse, error)
 	// SecretVote defines a method to add a secret vote on a specific proposal.
-	SecretVote(ctx context.Context, in *MsgSecretVote, opts ...grpc.CallOption) (*MsgVoteResponse, error)
+	SecretVote(ctx context.Context, in *MsgSecretVote, opts ...grpc.CallOption) (*MsgSecretVoteResponse, error)
 	// VoteWeighted defines a method to add a weighted vote on a specific proposal.
 	VoteWeighted(ctx context.Context, in *MsgVoteWeighted, opts ...grpc.CallOption) (*MsgVoteWeightedResponse, error)
 	// Deposit defines a method to add deposit on a specific proposal.
@@ -94,8 +94,8 @@ func (c *msgClient) Vote(ctx context.Context, in *MsgVote, opts ...grpc.CallOpti
 	return out, nil
 }
 
-func (c *msgClient) SecretVote(ctx context.Context, in *MsgSecretVote, opts ...grpc.CallOption) (*MsgVoteResponse, error) {
-	out := new(MsgVoteResponse)
+func (c *msgClient) SecretVote(ctx context.Context, in *MsgSecretVote, opts ...grpc.CallOption) (*MsgSecretVoteResponse, error) {
+	out := new(MsgSecretVoteResponse)
 	err := c.cc.Invoke(ctx, Msg_SecretVote_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -151,7 +151,7 @@ type MsgServer interface {
 	// Vote defines a method to add a vote on a specific proposal.
 	Vote(context.Context, *MsgVote) (*MsgVoteResponse, error)
 	// SecretVote defines a method to add a secret vote on a specific proposal.
-	SecretVote(context.Context, *MsgSecretVote) (*MsgVoteResponse, error)
+	SecretVote(context.Context, *MsgSecretVote) (*MsgSecretVoteResponse, error)
 	// VoteWeighted defines a method to add a weighted vote on a specific proposal.
 	VoteWeighted(context.Context, *MsgVoteWeighted) (*MsgVoteWeightedResponse, error)
 	// Deposit defines a method to add deposit on a specific proposal.
@@ -181,7 +181,7 @@ func (UnimplementedMsgServer) ExecLegacyContent(context.Context, *MsgExecLegacyC
 func (UnimplementedMsgServer) Vote(context.Context, *MsgVote) (*MsgVoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Vote not implemented")
 }
-func (UnimplementedMsgServer) SecretVote(context.Context, *MsgSecretVote) (*MsgVoteResponse, error) {
+func (UnimplementedMsgServer) SecretVote(context.Context, *MsgSecretVote) (*MsgSecretVoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SecretVote not implemented")
 }
 func (UnimplementedMsgServer) VoteWeighted(context.Context, *MsgVoteWeighted) (*MsgVoteWeightedResponse, error) {

@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	Msg_SubmitProposal_FullMethodName = "/cosmos.gov.v1beta1.Msg/SubmitProposal"
 	Msg_Vote_FullMethodName           = "/cosmos.gov.v1beta1.Msg/Vote"
+	Msg_SecretVote_FullMethodName     = "/cosmos.gov.v1beta1.Msg/SecretVote"
 	Msg_VoteWeighted_FullMethodName   = "/cosmos.gov.v1beta1.Msg/VoteWeighted"
 	Msg_Deposit_FullMethodName        = "/cosmos.gov.v1beta1.Msg/Deposit"
 )
@@ -33,6 +34,8 @@ type MsgClient interface {
 	SubmitProposal(ctx context.Context, in *MsgSubmitProposal, opts ...grpc.CallOption) (*MsgSubmitProposalResponse, error)
 	// Vote defines a method to add a vote on a specific proposal.
 	Vote(ctx context.Context, in *MsgVote, opts ...grpc.CallOption) (*MsgVoteResponse, error)
+	// SecretVote defines a method to add a secret vote on a specific proposal.
+	SecretVote(ctx context.Context, in *MsgSecretVote, opts ...grpc.CallOption) (*MsgSecretVoteResponse, error)
 	// VoteWeighted defines a method to add a weighted vote on a specific proposal.
 	//
 	// Since: cosmos-sdk 0.43
@@ -67,6 +70,15 @@ func (c *msgClient) Vote(ctx context.Context, in *MsgVote, opts ...grpc.CallOpti
 	return out, nil
 }
 
+func (c *msgClient) SecretVote(ctx context.Context, in *MsgSecretVote, opts ...grpc.CallOption) (*MsgSecretVoteResponse, error) {
+	out := new(MsgSecretVoteResponse)
+	err := c.cc.Invoke(ctx, Msg_SecretVote_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *msgClient) VoteWeighted(ctx context.Context, in *MsgVoteWeighted, opts ...grpc.CallOption) (*MsgVoteWeightedResponse, error) {
 	out := new(MsgVoteWeightedResponse)
 	err := c.cc.Invoke(ctx, Msg_VoteWeighted_FullMethodName, in, out, opts...)
@@ -93,6 +105,8 @@ type MsgServer interface {
 	SubmitProposal(context.Context, *MsgSubmitProposal) (*MsgSubmitProposalResponse, error)
 	// Vote defines a method to add a vote on a specific proposal.
 	Vote(context.Context, *MsgVote) (*MsgVoteResponse, error)
+	// SecretVote defines a method to add a secret vote on a specific proposal.
+	SecretVote(context.Context, *MsgSecretVote) (*MsgSecretVoteResponse, error)
 	// VoteWeighted defines a method to add a weighted vote on a specific proposal.
 	//
 	// Since: cosmos-sdk 0.43
@@ -111,6 +125,9 @@ func (UnimplementedMsgServer) SubmitProposal(context.Context, *MsgSubmitProposal
 }
 func (UnimplementedMsgServer) Vote(context.Context, *MsgVote) (*MsgVoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Vote not implemented")
+}
+func (UnimplementedMsgServer) SecretVote(context.Context, *MsgSecretVote) (*MsgSecretVoteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SecretVote not implemented")
 }
 func (UnimplementedMsgServer) VoteWeighted(context.Context, *MsgVoteWeighted) (*MsgVoteWeightedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VoteWeighted not implemented")
@@ -167,6 +184,24 @@ func _Msg_Vote_Handler(srv interface{}, ctx context.Context, dec func(interface{
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_SecretVote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSecretVote)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SecretVote(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_SecretVote_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SecretVote(ctx, req.(*MsgSecretVote))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Msg_VoteWeighted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MsgVoteWeighted)
 	if err := dec(in); err != nil {
@@ -217,6 +252,10 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Vote",
 			Handler:    _Msg_Vote_Handler,
+		},
+		{
+			MethodName: "SecretVote",
+			Handler:    _Msg_SecretVote_Handler,
 		},
 		{
 			MethodName: "VoteWeighted",

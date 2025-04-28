@@ -23,6 +23,8 @@ const (
 	Query_Proposals_FullMethodName   = "/cosmos.gov.v1beta1.Query/Proposals"
 	Query_Vote_FullMethodName        = "/cosmos.gov.v1beta1.Query/Vote"
 	Query_Votes_FullMethodName       = "/cosmos.gov.v1beta1.Query/Votes"
+	Query_SecretVote_FullMethodName  = "/cosmos.gov.v1beta1.Query/SecretVote"
+	Query_SecretVotes_FullMethodName = "/cosmos.gov.v1beta1.Query/SecretVotes"
 	Query_Params_FullMethodName      = "/cosmos.gov.v1beta1.Query/Params"
 	Query_Deposit_FullMethodName     = "/cosmos.gov.v1beta1.Query/Deposit"
 	Query_Deposits_FullMethodName    = "/cosmos.gov.v1beta1.Query/Deposits"
@@ -41,6 +43,10 @@ type QueryClient interface {
 	Vote(ctx context.Context, in *QueryVoteRequest, opts ...grpc.CallOption) (*QueryVoteResponse, error)
 	// Votes queries votes of a given proposal.
 	Votes(ctx context.Context, in *QueryVotesRequest, opts ...grpc.CallOption) (*QueryVotesResponse, error)
+	// SecretVote queries secret vote information based on proposalID, voterAddr.
+	SecretVote(ctx context.Context, in *QuerySecretVoteRequest, opts ...grpc.CallOption) (*QuerySecretVoteResponse, error)
+	// SecretVotes queries secret votes of a given proposal.
+	SecretVotes(ctx context.Context, in *QuerySecretVotesRequest, opts ...grpc.CallOption) (*QuerySecretVotesResponse, error)
 	// Params queries all parameters of the gov module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
 	// Deposit queries single deposit information based on proposalID, depositor address.
@@ -95,6 +101,24 @@ func (c *queryClient) Votes(ctx context.Context, in *QueryVotesRequest, opts ...
 	return out, nil
 }
 
+func (c *queryClient) SecretVote(ctx context.Context, in *QuerySecretVoteRequest, opts ...grpc.CallOption) (*QuerySecretVoteResponse, error) {
+	out := new(QuerySecretVoteResponse)
+	err := c.cc.Invoke(ctx, Query_SecretVote_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) SecretVotes(ctx context.Context, in *QuerySecretVotesRequest, opts ...grpc.CallOption) (*QuerySecretVotesResponse, error) {
+	out := new(QuerySecretVotesResponse)
+	err := c.cc.Invoke(ctx, Query_SecretVotes_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error) {
 	out := new(QueryParamsResponse)
 	err := c.cc.Invoke(ctx, Query_Params_FullMethodName, in, out, opts...)
@@ -143,6 +167,10 @@ type QueryServer interface {
 	Vote(context.Context, *QueryVoteRequest) (*QueryVoteResponse, error)
 	// Votes queries votes of a given proposal.
 	Votes(context.Context, *QueryVotesRequest) (*QueryVotesResponse, error)
+	// SecretVote queries secret vote information based on proposalID, voterAddr.
+	SecretVote(context.Context, *QuerySecretVoteRequest) (*QuerySecretVoteResponse, error)
+	// SecretVotes queries secret votes of a given proposal.
+	SecretVotes(context.Context, *QuerySecretVotesRequest) (*QuerySecretVotesResponse, error)
 	// Params queries all parameters of the gov module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
 	// Deposit queries single deposit information based on proposalID, depositor address.
@@ -169,6 +197,12 @@ func (UnimplementedQueryServer) Vote(context.Context, *QueryVoteRequest) (*Query
 }
 func (UnimplementedQueryServer) Votes(context.Context, *QueryVotesRequest) (*QueryVotesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Votes not implemented")
+}
+func (UnimplementedQueryServer) SecretVote(context.Context, *QuerySecretVoteRequest) (*QuerySecretVoteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SecretVote not implemented")
+}
+func (UnimplementedQueryServer) SecretVotes(context.Context, *QuerySecretVotesRequest) (*QuerySecretVotesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SecretVotes not implemented")
 }
 func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
@@ -267,6 +301,42 @@ func _Query_Votes_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_SecretVote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QuerySecretVoteRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).SecretVote(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_SecretVote_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).SecretVote(ctx, req.(*QuerySecretVoteRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_SecretVotes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QuerySecretVotesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).SecretVotes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_SecretVotes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).SecretVotes(ctx, req.(*QuerySecretVotesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(QueryParamsRequest)
 	if err := dec(in); err != nil {
@@ -361,6 +431,14 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Votes",
 			Handler:    _Query_Votes_Handler,
+		},
+		{
+			MethodName: "SecretVote",
+			Handler:    _Query_SecretVote_Handler,
+		},
+		{
+			MethodName: "SecretVotes",
+			Handler:    _Query_SecretVotes_Handler,
 		},
 		{
 			MethodName: "Params",

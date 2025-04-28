@@ -416,6 +416,24 @@ func (q legacyQueryServer) Votes(ctx context.Context, req *v1beta1.QueryVotesReq
 	}, nil
 }
 
+func (q legacyQueryServer) SecretVote(ctx context.Context, req *v1beta1.QuerySecretVoteRequest) (*v1beta1.QuerySecretVoteResponse, error) {
+	// If there's a corresponding method in v1.QueryServer, you can call it:
+	// resp, err := q.qs.SecretVote(ctx, &v1.QuerySecretVoteRequest{...})
+	// and then convert the response to v1beta1 format
+
+	// Otherwise implement the needed functionality here
+	return nil, status.Errorf(codes.Unimplemented, "method SecretVote not implemented")
+}
+
+func (q legacyQueryServer) SecretVotes(ctx context.Context, req *v1beta1.QuerySecretVotesRequest) (*v1beta1.QuerySecretVotesResponse, error) {
+	// If there's a corresponding method in v1.QueryServer, you can call it:
+	// resp, err := q.qs.SecretVotes(ctx, &v1.QuerySecretVotesRequest{...})
+	// and then convert the response to v1beta1 format
+
+	// Otherwise implement the needed functionality here
+	return nil, status.Errorf(codes.Unimplemented, "method SecretVotes not implemented")
+}
+
 //nolint:staticcheck // this is needed for legacy param support
 func (q legacyQueryServer) Params(ctx context.Context, req *v1beta1.QueryParamsRequest) (*v1beta1.QueryParamsResponse, error) {
 	resp, err := q.qs.Params(ctx, &v1.QueryParamsRequest{

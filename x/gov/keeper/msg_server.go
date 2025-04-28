@@ -193,7 +193,7 @@ func (k msgServer) Vote(goCtx context.Context, msg *v1.MsgVote) (*v1.MsgVoteResp
 }
 
 // SecretVote implements the MsgServer.SecretVote method.
-func (k msgServer) SecretVote(goCtx context.Context, msg *v1.MsgSecretVote) (*v1.MsgVoteResponse, error) {
+func (k msgServer) SecretVote(goCtx context.Context, msg *v1.MsgSecretVote) (*v1.MsgSecretVoteResponse, error) {
 	accAddr, err := k.authKeeper.AddressCodec().StringToBytes(msg.Voter)
 	if err != nil {
 		return nil, sdkerrors.ErrInvalidAddress.Wrapf("invalid voter address: %s", err)
@@ -209,7 +209,7 @@ func (k msgServer) SecretVote(goCtx context.Context, msg *v1.MsgSecretVote) (*v1
 		return nil, err
 	}
 
-	return &v1.MsgVoteResponse{}, nil
+	return &v1.MsgSecretVoteResponse{}, nil
 }
 
 // VoteWeighted implements the MsgServer.VoteWeighted method.
@@ -365,6 +365,18 @@ func (k legacyMsgServer) Vote(goCtx context.Context, msg *v1beta1.MsgVote) (*v1b
 		return nil, err
 	}
 	return &v1beta1.MsgVoteResponse{}, nil
+}
+
+func (k legacyMsgServer) SecretVote(goCtx context.Context, msg *v1beta1.MsgSecretVote) (*v1beta1.MsgSecretVoteResponse, error) {
+	_, err := k.server.SecretVote(goCtx, &v1.MsgSecretVote{
+		ProposalId: msg.ProposalId,
+		Voter:      msg.Voter,
+		CypherId:   msg.CypherId,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return &v1beta1.MsgSecretVoteResponse{}, nil
 }
 
 func (k legacyMsgServer) VoteWeighted(goCtx context.Context, msg *v1beta1.MsgVoteWeighted) (*v1beta1.MsgVoteWeightedResponse, error) {

@@ -13,6 +13,7 @@ import (
 const (
 	TypeMsgDeposit        = "deposit"
 	TypeMsgVote           = "vote"
+	TypeMsgSecretVote     = "secret_vote"
 	TypeMsgVoteWeighted   = "weighted_vote"
 	TypeMsgSubmitProposal = "submit_proposal"
 )
@@ -86,6 +87,11 @@ func NewMsgDeposit(depositor sdk.AccAddress, proposalID uint64, amount sdk.Coins
 // NewMsgVote creates a message to cast a vote on an active proposal
 func NewMsgVote(voter sdk.AccAddress, proposalID uint64, option VoteOption) *MsgVote {
 	return &MsgVote{proposalID, voter.String(), option}
+}
+
+// NewMsgSecretVote creates a message to cast a secret vote on an active proposal
+func NewMsgSecretVote(voter sdk.AccAddress, proposalID uint64, cypherId string) *MsgSecretVote {
+	return &MsgSecretVote{proposalID, voter.String(), cypherId}
 }
 
 // NewMsgVoteWeighted creates a message to cast a vote on an active proposal.

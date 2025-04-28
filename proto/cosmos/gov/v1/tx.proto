@@ -28,7 +28,7 @@ service Msg {
   rpc Vote(MsgVote) returns (MsgVoteResponse);
 
   // SecretVote defines a method to add a secret vote on a specific proposal.
-  rpc SecretVote(MsgSecretVote) returns (MsgVoteResponse);
+  rpc SecretVote(MsgSecretVote) returns (MsgSecretVoteResponse);
 
   // VoteWeighted defines a method to add a weighted vote on a specific proposal.
   rpc VoteWeighted(MsgVoteWeighted) returns (MsgVoteWeightedResponse);
@@ -146,6 +146,18 @@ message MsgSecretVote {
 
 // MsgVoteResponse defines the Msg/Vote response type.
 message MsgVoteResponse {}
+
+// MsgSecretVoteResponse defines the Msg/SecretVote response type.
+message MsgSecretVoteResponse {
+  // proposal_id defines the unique id of the proposal.
+  uint64 proposal_id = 1 [(gogoproto.jsontag) = "proposal_id"];
+
+  // cypher_id defines the cypher id of the vote.
+  string cypher_id = 2 [(gogoproto.jsontag) = "cypher_id"];
+
+  // secret_vote defines the secret vote.
+  SecretVote secret_vote = 3;
+}
 
 // MsgVoteWeighted defines a message to cast a vote.
 message MsgVoteWeighted {

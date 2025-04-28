@@ -1931,6 +1931,973 @@ func (x *fastReflection_MsgVoteResponse) ProtoMethods() *protoiface.Methods {
 	}
 }
 
+var (
+	md_MsgSecretVote             protoreflect.MessageDescriptor
+	fd_MsgSecretVote_proposal_id protoreflect.FieldDescriptor
+	fd_MsgSecretVote_voter       protoreflect.FieldDescriptor
+	fd_MsgSecretVote_cypher_id   protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_cosmos_gov_v1beta1_tx_proto_init()
+	md_MsgSecretVote = File_cosmos_gov_v1beta1_tx_proto.Messages().ByName("MsgSecretVote")
+	fd_MsgSecretVote_proposal_id = md_MsgSecretVote.Fields().ByName("proposal_id")
+	fd_MsgSecretVote_voter = md_MsgSecretVote.Fields().ByName("voter")
+	fd_MsgSecretVote_cypher_id = md_MsgSecretVote.Fields().ByName("cypher_id")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgSecretVote)(nil)
+
+type fastReflection_MsgSecretVote MsgSecretVote
+
+func (x *MsgSecretVote) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgSecretVote)(x)
+}
+
+func (x *MsgSecretVote) slowProtoReflect() protoreflect.Message {
+	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgSecretVote_messageType fastReflection_MsgSecretVote_messageType
+var _ protoreflect.MessageType = fastReflection_MsgSecretVote_messageType{}
+
+type fastReflection_MsgSecretVote_messageType struct{}
+
+func (x fastReflection_MsgSecretVote_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgSecretVote)(nil)
+}
+func (x fastReflection_MsgSecretVote_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgSecretVote)
+}
+func (x fastReflection_MsgSecretVote_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSecretVote
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgSecretVote) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSecretVote
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgSecretVote) Type() protoreflect.MessageType {
+	return _fastReflection_MsgSecretVote_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgSecretVote) New() protoreflect.Message {
+	return new(fastReflection_MsgSecretVote)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgSecretVote) Interface() protoreflect.ProtoMessage {
+	return (*MsgSecretVote)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgSecretVote) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.ProposalId != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.ProposalId)
+		if !f(fd_MsgSecretVote_proposal_id, value) {
+			return
+		}
+	}
+	if x.Voter != "" {
+		value := protoreflect.ValueOfString(x.Voter)
+		if !f(fd_MsgSecretVote_voter, value) {
+			return
+		}
+	}
+	if x.CypherId != "" {
+		value := protoreflect.ValueOfString(x.CypherId)
+		if !f(fd_MsgSecretVote_cypher_id, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgSecretVote) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVote.proposal_id":
+		return x.ProposalId != uint64(0)
+	case "cosmos.gov.v1beta1.MsgSecretVote.voter":
+		return x.Voter != ""
+	case "cosmos.gov.v1beta1.MsgSecretVote.cypher_id":
+		return x.CypherId != ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVote"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVote does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVote) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVote.proposal_id":
+		x.ProposalId = uint64(0)
+	case "cosmos.gov.v1beta1.MsgSecretVote.voter":
+		x.Voter = ""
+	case "cosmos.gov.v1beta1.MsgSecretVote.cypher_id":
+		x.CypherId = ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVote"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVote does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgSecretVote) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVote.proposal_id":
+		value := x.ProposalId
+		return protoreflect.ValueOfUint64(value)
+	case "cosmos.gov.v1beta1.MsgSecretVote.voter":
+		value := x.Voter
+		return protoreflect.ValueOfString(value)
+	case "cosmos.gov.v1beta1.MsgSecretVote.cypher_id":
+		value := x.CypherId
+		return protoreflect.ValueOfString(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVote"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVote does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVote) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVote.proposal_id":
+		x.ProposalId = value.Uint()
+	case "cosmos.gov.v1beta1.MsgSecretVote.voter":
+		x.Voter = value.Interface().(string)
+	case "cosmos.gov.v1beta1.MsgSecretVote.cypher_id":
+		x.CypherId = value.Interface().(string)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVote"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVote does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVote) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVote.proposal_id":
+		panic(fmt.Errorf("field proposal_id of message cosmos.gov.v1beta1.MsgSecretVote is not mutable"))
+	case "cosmos.gov.v1beta1.MsgSecretVote.voter":
+		panic(fmt.Errorf("field voter of message cosmos.gov.v1beta1.MsgSecretVote is not mutable"))
+	case "cosmos.gov.v1beta1.MsgSecretVote.cypher_id":
+		panic(fmt.Errorf("field cypher_id of message cosmos.gov.v1beta1.MsgSecretVote is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVote"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVote does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgSecretVote) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVote.proposal_id":
+		return protoreflect.ValueOfUint64(uint64(0))
+	case "cosmos.gov.v1beta1.MsgSecretVote.voter":
+		return protoreflect.ValueOfString("")
+	case "cosmos.gov.v1beta1.MsgSecretVote.cypher_id":
+		return protoreflect.ValueOfString("")
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVote"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVote does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgSecretVote) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in cosmos.gov.v1beta1.MsgSecretVote", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgSecretVote) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVote) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgSecretVote) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgSecretVote) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgSecretVote)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.ProposalId != 0 {
+			n += 1 + runtime.Sov(uint64(x.ProposalId))
+		}
+		l = len(x.Voter)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.CypherId)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgSecretVote)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.CypherId) > 0 {
+			i -= len(x.CypherId)
+			copy(dAtA[i:], x.CypherId)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.CypherId)))
+			i--
+			dAtA[i] = 0x1a
+		}
+		if len(x.Voter) > 0 {
+			i -= len(x.Voter)
+			copy(dAtA[i:], x.Voter)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Voter)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if x.ProposalId != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.ProposalId))
+			i--
+			dAtA[i] = 0x8
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgSecretVote)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSecretVote: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSecretVote: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field ProposalId", wireType)
+				}
+				x.ProposalId = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.ProposalId |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Voter", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Voter = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field CypherId", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.CypherId = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_MsgSecretVoteResponse             protoreflect.MessageDescriptor
+	fd_MsgSecretVoteResponse_secret_vote protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_cosmos_gov_v1beta1_tx_proto_init()
+	md_MsgSecretVoteResponse = File_cosmos_gov_v1beta1_tx_proto.Messages().ByName("MsgSecretVoteResponse")
+	fd_MsgSecretVoteResponse_secret_vote = md_MsgSecretVoteResponse.Fields().ByName("secret_vote")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgSecretVoteResponse)(nil)
+
+type fastReflection_MsgSecretVoteResponse MsgSecretVoteResponse
+
+func (x *MsgSecretVoteResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgSecretVoteResponse)(x)
+}
+
+func (x *MsgSecretVoteResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgSecretVoteResponse_messageType fastReflection_MsgSecretVoteResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgSecretVoteResponse_messageType{}
+
+type fastReflection_MsgSecretVoteResponse_messageType struct{}
+
+func (x fastReflection_MsgSecretVoteResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgSecretVoteResponse)(nil)
+}
+func (x fastReflection_MsgSecretVoteResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgSecretVoteResponse)
+}
+func (x fastReflection_MsgSecretVoteResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSecretVoteResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgSecretVoteResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgSecretVoteResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgSecretVoteResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgSecretVoteResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgSecretVoteResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgSecretVoteResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgSecretVoteResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgSecretVoteResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgSecretVoteResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.SecretVote != nil {
+		value := protoreflect.ValueOfMessage(x.SecretVote.ProtoReflect())
+		if !f(fd_MsgSecretVoteResponse_secret_vote, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgSecretVoteResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote":
+		return x.SecretVote != nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVoteResponse"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVoteResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVoteResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote":
+		x.SecretVote = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVoteResponse"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVoteResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgSecretVoteResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote":
+		value := x.SecretVote
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVoteResponse"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVoteResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVoteResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote":
+		x.SecretVote = value.Message().Interface().(*SecretVote)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVoteResponse"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVoteResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVoteResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote":
+		if x.SecretVote == nil {
+			x.SecretVote = new(SecretVote)
+		}
+		return protoreflect.ValueOfMessage(x.SecretVote.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVoteResponse"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVoteResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgSecretVoteResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote":
+		m := new(SecretVote)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: cosmos.gov.v1beta1.MsgSecretVoteResponse"))
+		}
+		panic(fmt.Errorf("message cosmos.gov.v1beta1.MsgSecretVoteResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgSecretVoteResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in cosmos.gov.v1beta1.MsgSecretVoteResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgSecretVoteResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgSecretVoteResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgSecretVoteResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgSecretVoteResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgSecretVoteResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.SecretVote != nil {
+			l = options.Size(x.SecretVote)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgSecretVoteResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.SecretVote != nil {
+			encoded, err := options.Marshal(x.SecretVote)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgSecretVoteResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSecretVoteResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgSecretVoteResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field SecretVote", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.SecretVote == nil {
+					x.SecretVote = &SecretVote{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.SecretVote); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
 var _ protoreflect.List = (*_MsgVoteWeighted_3_list)(nil)
 
 type _MsgVoteWeighted_3_list struct {
@@ -2006,7 +2973,7 @@ func (x *MsgVoteWeighted) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgVoteWeighted) slowProtoReflect() protoreflect.Message {
-	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[4]
+	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2555,7 +3522,7 @@ func (x *MsgVoteWeightedResponse) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgVoteWeightedResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[5]
+	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2968,7 +3935,7 @@ func (x *MsgDeposit) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgDeposit) slowProtoReflect() protoreflect.Message {
-	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[6]
+	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3517,7 +4484,7 @@ func (x *MsgDepositResponse) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgDepositResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[7]
+	mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4043,6 +5010,98 @@ func (*MsgVoteResponse) Descriptor() ([]byte, []int) {
 	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{3}
 }
 
+// MsgSecretVote defines a message to cast a secret vote.
+type MsgSecretVote struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// proposal_id defines the unique id of the proposal.
+	ProposalId uint64 `protobuf:"varint,1,opt,name=proposal_id,json=proposalId,proto3" json:"proposal_id,omitempty"`
+	// voter is the voter address for the proposal.
+	Voter string `protobuf:"bytes,2,opt,name=voter,proto3" json:"voter,omitempty"`
+	// cypher_id is the id of the cypher.
+	CypherId string `protobuf:"bytes,3,opt,name=cypher_id,json=cypherId,proto3" json:"cypher_id,omitempty"`
+}
+
+func (x *MsgSecretVote) Reset() {
+	*x = MsgSecretVote{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgSecretVote) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgSecretVote) ProtoMessage() {}
+
+// Deprecated: Use MsgSecretVote.ProtoReflect.Descriptor instead.
+func (*MsgSecretVote) Descriptor() ([]byte, []int) {
+	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *MsgSecretVote) GetProposalId() uint64 {
+	if x != nil {
+		return x.ProposalId
+	}
+	return 0
+}
+
+func (x *MsgSecretVote) GetVoter() string {
+	if x != nil {
+		return x.Voter
+	}
+	return ""
+}
+
+func (x *MsgSecretVote) GetCypherId() string {
+	if x != nil {
+		return x.CypherId
+	}
+	return ""
+}
+
+// MsgSecretVoteResponse defines the Msg/SecretVote response type.
+type MsgSecretVoteResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// secret_vote defines the secret vote.
+	SecretVote *SecretVote `protobuf:"bytes,1,opt,name=secret_vote,json=secretVote,proto3" json:"secret_vote,omitempty"`
+}
+
+func (x *MsgSecretVoteResponse) Reset() {
+	*x = MsgSecretVoteResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgSecretVoteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgSecretVoteResponse) ProtoMessage() {}
+
+// Deprecated: Use MsgSecretVoteResponse.ProtoReflect.Descriptor instead.
+func (*MsgSecretVoteResponse) Descriptor() ([]byte, []int) {
+	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *MsgSecretVoteResponse) GetSecretVote() *SecretVote {
+	if x != nil {
+		return x.SecretVote
+	}
+	return nil
+}
+
 // MsgVoteWeighted defines a message to cast a vote.
 //
 // Since: cosmos-sdk 0.43
@@ -4062,7 +5121,7 @@ type MsgVoteWeighted struct {
 func (x *MsgVoteWeighted) Reset() {
 	*x = MsgVoteWeighted{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[4]
+		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4076,7 +5135,7 @@ func (*MsgVoteWeighted) ProtoMessage() {}
 
 // Deprecated: Use MsgVoteWeighted.ProtoReflect.Descriptor instead.
 func (*MsgVoteWeighted) Descriptor() ([]byte, []int) {
-	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{4}
+	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *MsgVoteWeighted) GetProposalId() uint64 {
@@ -4112,7 +5171,7 @@ type MsgVoteWeightedResponse struct {
 func (x *MsgVoteWeightedResponse) Reset() {
 	*x = MsgVoteWeightedResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[5]
+		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4126,7 +5185,7 @@ func (*MsgVoteWeightedResponse) ProtoMessage() {}
 
 // Deprecated: Use MsgVoteWeightedResponse.ProtoReflect.Descriptor instead.
 func (*MsgVoteWeightedResponse) Descriptor() ([]byte, []int) {
-	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{5}
+	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{7}
 }
 
 // MsgDeposit defines a message to submit a deposit to an existing proposal.
@@ -4146,7 +5205,7 @@ type MsgDeposit struct {
 func (x *MsgDeposit) Reset() {
 	*x = MsgDeposit{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[6]
+		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4160,7 +5219,7 @@ func (*MsgDeposit) ProtoMessage() {}
 
 // Deprecated: Use MsgDeposit.ProtoReflect.Descriptor instead.
 func (*MsgDeposit) Descriptor() ([]byte, []int) {
-	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{6}
+	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *MsgDeposit) GetProposalId() uint64 {
@@ -4194,7 +5253,7 @@ type MsgDepositResponse struct {
 func (x *MsgDepositResponse) Reset() {
 	*x = MsgDepositResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[7]
+		mi := &file_cosmos_gov_v1beta1_tx_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4208,7 +5267,7 @@ func (*MsgDepositResponse) ProtoMessage() {}
 
 // Deprecated: Use MsgDepositResponse.ProtoReflect.Descriptor instead.
 func (*MsgDepositResponse) Descriptor() ([]byte, []int) {
-	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{7}
+	return file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP(), []int{9}
 }
 
 var File_cosmos_gov_v1beta1_tx_proto protoreflect.FileDescriptor
@@ -4269,80 +5328,104 @@ var file_cosmos_gov_v1beta1_tx_proto_rawDesc = []byte{
 	0x76, 0x6f, 0x74, 0x65, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x12, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
 	0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x22, 0x11, 0x0a, 0x0f,
 	0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
-	0xf8, 0x01, 0x0a, 0x0f, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68,
-	0x74, 0x65, 0x64, 0x12, 0x35, 0x0a, 0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x5f,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x42, 0x14, 0xea, 0xde, 0x1f, 0x0b, 0x70, 0x72,
-	0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x5f, 0x69, 0x64, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x0a,
-	0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x49, 0x64, 0x12, 0x2e, 0x0a, 0x05, 0x76, 0x6f,
-	0x74, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72,
-	0x69, 0x6e, 0x67, 0x52, 0x05, 0x76, 0x6f, 0x74, 0x65, 0x72, 0x12, 0x4b, 0x0a, 0x07, 0x6f, 0x70,
-	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31,
-	0x2e, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x56, 0x6f, 0x74, 0x65, 0x4f, 0x70, 0x74,
-	0x69, 0x6f, 0x6e, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x07,
-	0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x3a, 0x31, 0x88, 0xa0, 0x1f, 0x00, 0xe8, 0xa0, 0x1f,
-	0x00, 0x82, 0xe7, 0xb0, 0x2a, 0x05, 0x76, 0x6f, 0x74, 0x65, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x1a,
-	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x4d, 0x73, 0x67, 0x56, 0x6f,
-	0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73,
-	0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xac, 0x02, 0x0a, 0x0a, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70,
-	0x6f, 0x73, 0x69, 0x74, 0x12, 0x35, 0x0a, 0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c,
-	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x42, 0x14, 0xea, 0xde, 0x1f, 0x0b, 0x70,
-	0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x5f, 0x69, 0x64, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52,
-	0x0a, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x49, 0x64, 0x12, 0x36, 0x0a, 0x09, 0x64,
-	0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18,
-	0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65,
-	0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69,
-	0x74, 0x6f, 0x72, 0x12, 0x79, 0x0a, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73,
-	0x65, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x42, 0x46,
-	0xc8, 0xde, 0x1f, 0x00, 0xaa, 0xdf, 0x1f, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
-	0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x73,
-	0x9a, 0xe7, 0xb0, 0x2a, 0x0c, 0x6c, 0x65, 0x67, 0x61, 0x63, 0x79, 0x5f, 0x63, 0x6f, 0x69, 0x6e,
-	0x73, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x34,
-	0x88, 0xa0, 0x1f, 0x00, 0xe8, 0xa0, 0x1f, 0x00, 0x80, 0xdc, 0x20, 0x00, 0x82, 0xe7, 0xb0, 0x2a,
-	0x09, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x6f, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x15, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70,
-	0x6f, 0x73, 0x69, 0x74, 0x22, 0x14, 0x0a, 0x12, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70, 0x6f, 0x73,
-	0x69, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xf3, 0x02, 0x0a, 0x03, 0x4d,
-	0x73, 0x67, 0x12, 0x66, 0x0a, 0x0e, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x50, 0x72, 0x6f, 0x70,
-	0x6f, 0x73, 0x61, 0x6c, 0x12, 0x25, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f,
-	0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62,
-	0x6d, 0x69, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x1a, 0x2d, 0x2e, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31,
-	0x2e, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x6f, 0x73,
-	0x61, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x04, 0x56, 0x6f,
-	0x74, 0x65, 0x12, 0x1b, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e,
-	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x1a,
-	0x23, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62,
-	0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x60, 0x0a, 0x0c, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67,
-	0x68, 0x74, 0x65, 0x64, 0x12, 0x23, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f,
-	0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74,
-	0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x1a, 0x2b, 0x2e, 0x63, 0x6f, 0x73, 0x6d,
+	0xc2, 0x01, 0x0a, 0x0d, 0x4d, 0x73, 0x67, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x56, 0x6f, 0x74,
+	0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0a, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c,
+	0x49, 0x64, 0x12, 0x2e, 0x0a, 0x05, 0x76, 0x6f, 0x74, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64,
+	0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x05, 0x76, 0x6f, 0x74,
+	0x65, 0x72, 0x12, 0x2f, 0x0a, 0x09, 0x63, 0x79, 0x70, 0x68, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x12, 0xea, 0xde, 0x1f, 0x09, 0x63, 0x79, 0x70, 0x68, 0x65,
+	0x72, 0x5f, 0x69, 0x64, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x08, 0x63, 0x79, 0x70, 0x68, 0x65,
+	0x72, 0x49, 0x64, 0x3a, 0x2f, 0x88, 0xa0, 0x1f, 0x00, 0xe8, 0xa0, 0x1f, 0x00, 0x82, 0xe7, 0xb0,
+	0x2a, 0x05, 0x76, 0x6f, 0x74, 0x65, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x18, 0x63, 0x6f, 0x73, 0x6d,
+	0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x4d, 0x73, 0x67, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74,
+	0x56, 0x6f, 0x74, 0x65, 0x22, 0x63, 0x0a, 0x15, 0x4d, 0x73, 0x67, 0x53, 0x65, 0x63, 0x72, 0x65,
+	0x74, 0x56, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4a, 0x0a,
+	0x0b, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x5f, 0x76, 0x6f, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x56, 0x6f,
+	0x74, 0x65, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x0a, 0x73,
+	0x65, 0x63, 0x72, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x22, 0xf8, 0x01, 0x0a, 0x0f, 0x4d, 0x73,
+	0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x12, 0x35, 0x0a,
+	0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x04, 0x42, 0x14, 0xea, 0xde, 0x1f, 0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c,
+	0x5f, 0x69, 0x64, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x0a, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73,
+	0x61, 0x6c, 0x49, 0x64, 0x12, 0x2e, 0x0a, 0x05, 0x76, 0x6f, 0x74, 0x65, 0x72, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e,
+	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x05, 0x76,
+	0x6f, 0x74, 0x65, 0x72, 0x12, 0x4b, 0x0a, 0x07, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18,
+	0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67,
+	0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x57, 0x65, 0x69, 0x67, 0x68,
+	0x74, 0x65, 0x64, 0x56, 0x6f, 0x74, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x09, 0xc8,
+	0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x07, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x3a, 0x31, 0x88, 0xa0, 0x1f, 0x00, 0xe8, 0xa0, 0x1f, 0x00, 0x82, 0xe7, 0xb0, 0x2a, 0x05,
+	0x76, 0x6f, 0x74, 0x65, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x1a, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67,
+	0x68, 0x74, 0x65, 0x64, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x57,
+	0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0xac, 0x02, 0x0a, 0x0a, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x12, 0x35,
+	0x0a, 0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x04, 0x42, 0x14, 0xea, 0xde, 0x1f, 0x0b, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61,
+	0x6c, 0x5f, 0x69, 0x64, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x0a, 0x70, 0x72, 0x6f, 0x70, 0x6f,
+	0x73, 0x61, 0x6c, 0x49, 0x64, 0x12, 0x36, 0x0a, 0x09, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74,
+	0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f,
+	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69,
+	0x6e, 0x67, 0x52, 0x09, 0x64, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x6f, 0x72, 0x12, 0x79, 0x0a,
+	0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e,
+	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x42, 0x46, 0xc8, 0xde, 0x1f, 0x00, 0xaa, 0xdf,
+	0x1f, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x63, 0x6f, 0x73,
+	0x6d, 0x6f, 0x73, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d, 0x73, 0x64, 0x6b, 0x2f, 0x74,
+	0x79, 0x70, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x69, 0x6e, 0x73, 0x9a, 0xe7, 0xb0, 0x2a, 0x0c, 0x6c,
+	0x65, 0x67, 0x61, 0x63, 0x79, 0x5f, 0x63, 0x6f, 0x69, 0x6e, 0x73, 0xa8, 0xe7, 0xb0, 0x2a, 0x01,
+	0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x34, 0x88, 0xa0, 0x1f, 0x00, 0xe8, 0xa0,
+	0x1f, 0x00, 0x80, 0xdc, 0x20, 0x00, 0x82, 0xe7, 0xb0, 0x2a, 0x09, 0x64, 0x65, 0x70, 0x6f, 0x73,
+	0x69, 0x74, 0x6f, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x15, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2d,
+	0x73, 0x64, 0x6b, 0x2f, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x22, 0x14,
+	0x0a, 0x12, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x32, 0xcf, 0x03, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x66, 0x0a, 0x0e,
+	0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x12, 0x25,
+	0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x50, 0x72, 0x6f,
+	0x70, 0x6f, 0x73, 0x61, 0x6c, 0x1a, 0x2d, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67,
+	0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x75,
+	0x62, 0x6d, 0x69, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x61, 0x6c, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x04, 0x56, 0x6f, 0x74, 0x65, 0x12, 0x1b, 0x2e, 0x63,
+	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x1a, 0x23, 0x2e, 0x63, 0x6f, 0x73, 0x6d,
 	0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d,
-	0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x51, 0x0a, 0x07, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69,
-	0x74, 0x12, 0x1e, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76,
-	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69,
-	0x74, 0x1a, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76,
-	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x70, 0x6f, 0x73, 0x69,
-	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01,
-	0x42, 0xbb, 0x01, 0x0a, 0x16, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e,
-	0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42, 0x07, 0x54, 0x78, 0x50,
-	0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x73, 0x64,
-	0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f,
-	0x67, 0x6f, 0x76, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x3b, 0x67, 0x6f, 0x76, 0x76,
-	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0xa2, 0x02, 0x03, 0x43, 0x47, 0x58, 0xaa, 0x02, 0x12, 0x43,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x47, 0x6f, 0x76, 0x2e, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61,
-	0x31, 0xca, 0x02, 0x12, 0x43, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5c, 0x47, 0x6f, 0x76, 0x5c, 0x56,
-	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0xe2, 0x02, 0x1e, 0x43, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5c,
-	0x47, 0x6f, 0x76, 0x5c, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x14, 0x43, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
-	0x3a, 0x3a, 0x47, 0x6f, 0x76, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5a,
+	0x0a, 0x0a, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x12, 0x21, 0x2e, 0x63,
+	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x56, 0x6f, 0x74, 0x65, 0x1a,
+	0x29, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62,
+	0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x56, 0x6f,
+	0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x60, 0x0a, 0x0c, 0x56, 0x6f,
+	0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x12, 0x23, 0x2e, 0x63, 0x6f, 0x73,
+	0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
+	0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74, 0x65, 0x64, 0x1a,
+	0x2b, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62,
+	0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x56, 0x6f, 0x74, 0x65, 0x57, 0x65, 0x69, 0x67,
+	0x68, 0x74, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x51, 0x0a, 0x07,
+	0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x12, 0x1e, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67,
+	0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x1a, 0x26, 0x2e, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4d, 0x73, 0x67,
+	0x44, 0x65, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a,
+	0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0xbb, 0x01, 0x0a, 0x16, 0x63, 0x6f, 0x6d, 0x2e, 0x63,
+	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x67, 0x6f, 0x76, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x2e, 0x63, 0x6f,
+	0x73, 0x6d, 0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63,
+	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x67, 0x6f, 0x76, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x3b, 0x67, 0x6f, 0x76, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0xa2, 0x02, 0x03, 0x43,
+	0x47, 0x58, 0xaa, 0x02, 0x12, 0x43, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x47, 0x6f, 0x76, 0x2e,
+	0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0xca, 0x02, 0x12, 0x43, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x5c, 0x47, 0x6f, 0x76, 0x5c, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0xe2, 0x02, 0x1e, 0x43,
+	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5c, 0x47, 0x6f, 0x76, 0x5c, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x14,
+	0x43, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x3a, 0x3a, 0x47, 0x6f, 0x76, 0x3a, 0x3a, 0x56, 0x31, 0x62,
+	0x65, 0x74, 0x61, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4357,40 +5440,46 @@ func file_cosmos_gov_v1beta1_tx_proto_rawDescGZIP() []byte {
 	return file_cosmos_gov_v1beta1_tx_proto_rawDescData
 }
 
-var file_cosmos_gov_v1beta1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_cosmos_gov_v1beta1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_cosmos_gov_v1beta1_tx_proto_goTypes = []interface{}{
 	(*MsgSubmitProposal)(nil),         // 0: cosmos.gov.v1beta1.MsgSubmitProposal
 	(*MsgSubmitProposalResponse)(nil), // 1: cosmos.gov.v1beta1.MsgSubmitProposalResponse
 	(*MsgVote)(nil),                   // 2: cosmos.gov.v1beta1.MsgVote
 	(*MsgVoteResponse)(nil),           // 3: cosmos.gov.v1beta1.MsgVoteResponse
-	(*MsgVoteWeighted)(nil),           // 4: cosmos.gov.v1beta1.MsgVoteWeighted
-	(*MsgVoteWeightedResponse)(nil),   // 5: cosmos.gov.v1beta1.MsgVoteWeightedResponse
-	(*MsgDeposit)(nil),                // 6: cosmos.gov.v1beta1.MsgDeposit
-	(*MsgDepositResponse)(nil),        // 7: cosmos.gov.v1beta1.MsgDepositResponse
-	(*anypb.Any)(nil),                 // 8: google.protobuf.Any
-	(*v1beta1.Coin)(nil),              // 9: cosmos.base.v1beta1.Coin
-	(VoteOption)(0),                   // 10: cosmos.gov.v1beta1.VoteOption
-	(*WeightedVoteOption)(nil),        // 11: cosmos.gov.v1beta1.WeightedVoteOption
+	(*MsgSecretVote)(nil),             // 4: cosmos.gov.v1beta1.MsgSecretVote
+	(*MsgSecretVoteResponse)(nil),     // 5: cosmos.gov.v1beta1.MsgSecretVoteResponse
+	(*MsgVoteWeighted)(nil),           // 6: cosmos.gov.v1beta1.MsgVoteWeighted
+	(*MsgVoteWeightedResponse)(nil),   // 7: cosmos.gov.v1beta1.MsgVoteWeightedResponse
+	(*MsgDeposit)(nil),                // 8: cosmos.gov.v1beta1.MsgDeposit
+	(*MsgDepositResponse)(nil),        // 9: cosmos.gov.v1beta1.MsgDepositResponse
+	(*anypb.Any)(nil),                 // 10: google.protobuf.Any
+	(*v1beta1.Coin)(nil),              // 11: cosmos.base.v1beta1.Coin
+	(VoteOption)(0),                   // 12: cosmos.gov.v1beta1.VoteOption
+	(*SecretVote)(nil),                // 13: cosmos.gov.v1beta1.SecretVote
+	(*WeightedVoteOption)(nil),        // 14: cosmos.gov.v1beta1.WeightedVoteOption
 }
 var file_cosmos_gov_v1beta1_tx_proto_depIdxs = []int32{
-	8,  // 0: cosmos.gov.v1beta1.MsgSubmitProposal.content:type_name -> google.protobuf.Any
-	9,  // 1: cosmos.gov.v1beta1.MsgSubmitProposal.initial_deposit:type_name -> cosmos.base.v1beta1.Coin
-	10, // 2: cosmos.gov.v1beta1.MsgVote.option:type_name -> cosmos.gov.v1beta1.VoteOption
-	11, // 3: cosmos.gov.v1beta1.MsgVoteWeighted.options:type_name -> cosmos.gov.v1beta1.WeightedVoteOption
-	9,  // 4: cosmos.gov.v1beta1.MsgDeposit.amount:type_name -> cosmos.base.v1beta1.Coin
-	0,  // 5: cosmos.gov.v1beta1.Msg.SubmitProposal:input_type -> cosmos.gov.v1beta1.MsgSubmitProposal
-	2,  // 6: cosmos.gov.v1beta1.Msg.Vote:input_type -> cosmos.gov.v1beta1.MsgVote
-	4,  // 7: cosmos.gov.v1beta1.Msg.VoteWeighted:input_type -> cosmos.gov.v1beta1.MsgVoteWeighted
-	6,  // 8: cosmos.gov.v1beta1.Msg.Deposit:input_type -> cosmos.gov.v1beta1.MsgDeposit
-	1,  // 9: cosmos.gov.v1beta1.Msg.SubmitProposal:output_type -> cosmos.gov.v1beta1.MsgSubmitProposalResponse
-	3,  // 10: cosmos.gov.v1beta1.Msg.Vote:output_type -> cosmos.gov.v1beta1.MsgVoteResponse
-	5,  // 11: cosmos.gov.v1beta1.Msg.VoteWeighted:output_type -> cosmos.gov.v1beta1.MsgVoteWeightedResponse
-	7,  // 12: cosmos.gov.v1beta1.Msg.Deposit:output_type -> cosmos.gov.v1beta1.MsgDepositResponse
-	9,  // [9:13] is the sub-list for method output_type
-	5,  // [5:9] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	10, // 0: cosmos.gov.v1beta1.MsgSubmitProposal.content:type_name -> google.protobuf.Any
+	11, // 1: cosmos.gov.v1beta1.MsgSubmitProposal.initial_deposit:type_name -> cosmos.base.v1beta1.Coin
+	12, // 2: cosmos.gov.v1beta1.MsgVote.option:type_name -> cosmos.gov.v1beta1.VoteOption
+	13, // 3: cosmos.gov.v1beta1.MsgSecretVoteResponse.secret_vote:type_name -> cosmos.gov.v1beta1.SecretVote
+	14, // 4: cosmos.gov.v1beta1.MsgVoteWeighted.options:type_name -> cosmos.gov.v1beta1.WeightedVoteOption
+	11, // 5: cosmos.gov.v1beta1.MsgDeposit.amount:type_name -> cosmos.base.v1beta1.Coin
+	0,  // 6: cosmos.gov.v1beta1.Msg.SubmitProposal:input_type -> cosmos.gov.v1beta1.MsgSubmitProposal
+	2,  // 7: cosmos.gov.v1beta1.Msg.Vote:input_type -> cosmos.gov.v1beta1.MsgVote
+	4,  // 8: cosmos.gov.v1beta1.Msg.SecretVote:input_type -> cosmos.gov.v1beta1.MsgSecretVote
+	6,  // 9: cosmos.gov.v1beta1.Msg.VoteWeighted:input_type -> cosmos.gov.v1beta1.MsgVoteWeighted
+	8,  // 10: cosmos.gov.v1beta1.Msg.Deposit:input_type -> cosmos.gov.v1beta1.MsgDeposit
+	1,  // 11: cosmos.gov.v1beta1.Msg.SubmitProposal:output_type -> cosmos.gov.v1beta1.MsgSubmitProposalResponse
+	3,  // 12: cosmos.gov.v1beta1.Msg.Vote:output_type -> cosmos.gov.v1beta1.MsgVoteResponse
+	5,  // 13: cosmos.gov.v1beta1.Msg.SecretVote:output_type -> cosmos.gov.v1beta1.MsgSecretVoteResponse
+	7,  // 14: cosmos.gov.v1beta1.Msg.VoteWeighted:output_type -> cosmos.gov.v1beta1.MsgVoteWeightedResponse
+	9,  // 15: cosmos.gov.v1beta1.Msg.Deposit:output_type -> cosmos.gov.v1beta1.MsgDepositResponse
+	11, // [11:16] is the sub-list for method output_type
+	6,  // [6:11] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_cosmos_gov_v1beta1_tx_proto_init() }
@@ -4449,7 +5538,7 @@ func file_cosmos_gov_v1beta1_tx_proto_init() {
 			}
 		}
 		file_cosmos_gov_v1beta1_tx_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgVoteWeighted); i {
+			switch v := v.(*MsgSecretVote); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4461,7 +5550,7 @@ func file_cosmos_gov_v1beta1_tx_proto_init() {
 			}
 		}
 		file_cosmos_gov_v1beta1_tx_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgVoteWeightedResponse); i {
+			switch v := v.(*MsgSecretVoteResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4473,7 +5562,7 @@ func file_cosmos_gov_v1beta1_tx_proto_init() {
 			}
 		}
 		file_cosmos_gov_v1beta1_tx_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgDeposit); i {
+			switch v := v.(*MsgVoteWeighted); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4485,6 +5574,30 @@ func file_cosmos_gov_v1beta1_tx_proto_init() {
 			}
 		}
 		file_cosmos_gov_v1beta1_tx_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgVoteWeightedResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cosmos_gov_v1beta1_tx_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgDeposit); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_cosmos_gov_v1beta1_tx_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MsgDepositResponse); i {
 			case 0:
 				return &v.state
@@ -4503,7 +5616,7 @@ func file_cosmos_gov_v1beta1_tx_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_cosmos_gov_v1beta1_tx_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
