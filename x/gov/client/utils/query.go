@@ -160,6 +160,16 @@ func QueryVoteByTxQuery(clientCtx client.Context, params v1.QueryVoteParams) ([]
 	return nil, fmt.Errorf("address '%s' did not vote on proposalID %d", params.Voter, params.ProposalID)
 }
 
+// QuerySecretVoteByTxQuery will query for a single secret vote via a direct txs tags query.
+func QuerySecretVoteByTxQuery(clientCtx client.Context, params v1.QuerySecretVoteParams) ([]byte, error) {
+	return nil, fmt.Errorf("secret vote query is not supported")
+}
+
+// QuerySecretVotesByTxQuery will query for secret votes via a direct txs tags query.
+func QuerySecretVotesByTxQuery(clientCtx client.Context, params v1.QueryProposalSecretVotesParams) ([]byte, error) {
+	return nil, fmt.Errorf("secret vote query is not supported")
+}
+
 // QueryProposerByTxQuery will query for a proposer of a governance proposal by ID.
 // Deprecated: Should not be used, as not always accurate. It will be removed in v0.51.
 func QueryProposerByTxQuery(clientCtx client.Context, proposalID uint64) (Proposer, error) {

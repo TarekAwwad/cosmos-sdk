@@ -13,8 +13,8 @@ const (
 	QueryDeposit     = "deposit"
 	QueryVotes       = "votes"
 	QueryVote        = "vote"
-	QuerySecretVote  = "secretvote"
-	QuerySecretVotes = "secretvotes"
+	QuerySecretVote  = "secret_vote"
+	QuerySecretVotes = "secret_votes"
 	QueryTally       = "tally"
 
 	ParamDeposit  = "deposit"

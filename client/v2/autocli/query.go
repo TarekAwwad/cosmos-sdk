@@ -73,10 +73,14 @@ func (b *Builder) AddQueryServiceCommands(cmd *cobra.Command, cmdDescriptor *aut
 	rpcOptMap := map[protoreflect.Name]*autocliv1.RpcCommandOptions{}
 	for _, option := range cmdDescriptor.RpcCommandOptions {
 		name := protoreflect.Name(option.RpcMethod)
+
+		// print name
+		fmt.Printf("rpc method name is %q for service %q\n", name, service.FullName())
+
 		rpcOptMap[name] = option
 		// make sure method exists
 		if m := methods.ByName(name); m == nil {
-			return fmt.Errorf("rpc method %q not found for service %q", name, service.FullName())
+			return fmt.Errorf("rpc method %q not not found for service %q", name, service.FullName())
 		}
 	}
 
